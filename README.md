@@ -42,11 +42,6 @@ You can install JsonModeler using pip:
 ```bash
 pip install jsonmodeler
 ```
-Or install using brew:
-
-```bash
-brew install jsonmodeler
-```
 
 ## Usage
 

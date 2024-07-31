@@ -42,11 +42,6 @@ JsonModeler/
 ```bash
 pip install jsonmodeler
 ```
-或者使用 brew 安装：
-
-```bash
-brew install jsonmodeler
-```
 
 ## 用法
 
