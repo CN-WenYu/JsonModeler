@@ -11,9 +11,8 @@ JsonModeler 是一个将 JSON 数据转换为多种编程语言模型代码的�
 JsonModeler/
 ├── jsonmodeler/
 │   ├── __init__.py
-│   ├── config.py           # 配置管理
+│   ├── json_modeler.py     # 模型生成器主接口
 │   ├── json_parser.py      # JSON 解析器
-│   ├── model_generator.py  # 模型生成器主接口
 │   ├── languages/          # 各语言支持模块
 │   │   ├── __init__.py
 │   │   ├── base.py         # 基础语言生成器类
@@ -70,25 +69,16 @@ jsonmodeler example.json -l python -o output.py
 以下是如何在 Python 代码中使用 JsonModeler 的示例：
 
 ```python
-from jsonmodeler.config import Config
-from jsonmodeler.model_generator import ModelGenerator
+from jsonmodeler.json_modeler import JsonModeler, Language
 
-# 创建配置对象
-config = Config(output_language='python')
-
-# 创建模型生成器对象
-generator = ModelGenerator(config)
-
-# 生成模型代码
-model_code = generator.generate({
+# 使用示例
+model_code = JsonModeler.generate(Language.PYTHON, {
     "Person": {
         "name": "John",
         "age": 30,
         "is_student": False
     }
 })
-
-# 打印生成的模型代码
 print(model_code)
 ```
 

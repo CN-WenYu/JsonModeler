@@ -11,9 +11,8 @@ JsonModeler is a tool that converts JSON data into model code in multiple progra
 JsonModeler/
 ├── jsonmodeler/
 │   ├── __init__.py
-│   ├── config.py           # Configuration management
+│   ├── json_modeler.py     # Model generator main interface
 │   ├── json_parser.py      # JSON parser
-│   ├── model_generator.py  # Model generator main interface
 │   ├── languages/          # Each language support module
 │   │   ├── __init__.py
 │   │   ├── base.py         # Basic language generator class
@@ -70,13 +69,10 @@ jsonmodeler example.json -l python -o output.py
 Here's an example of how to use JsonModeler in your Python code:
 
 ```python
-from jsonmodeler.config import Config
-from jsonmodeler.model_generator import ModelGenerator
+from jsonmodeler.json_modeler import JsonModeler, Language
 
 # Example usage
-config = Config(output_language='python')
-generator = ModelGenerator(config)
-model_code = generator.generate({
+model_code = JsonModeler.generate(Language.PYTHON, {
     "Person": {
         "name": "John",
         "age": 30,

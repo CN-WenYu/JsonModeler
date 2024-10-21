@@ -1,6 +1,5 @@
 import unittest
-from jsonmodeler.config import Config
-from jsonmodeler.model_generator import ModelGenerator
+from jsonmodeler.json_modeler import JsonModeler, Language
 
 
 class TestModelGenerator(unittest.TestCase):
@@ -19,9 +18,7 @@ class TestModelGenerator(unittest.TestCase):
         }
 
     def test_generate_objc(self):
-        config = Config(output_language='objc')
-        generator = ModelGenerator(config)
-        model_code = generator.generate(self.valid_json)
+        model_code = JsonModeler.generate(Language.OBJC, self.valid_json)
         expected_code = (
             "@interface Root : NSObject\n\n"
             "@property (nonatomic, strong) Person *Person;\n"
@@ -45,9 +42,7 @@ class TestModelGenerator(unittest.TestCase):
         self.assertEqual(model_code_lines, expected_code_lines)
 
     def test_generate_swift(self):
-        config = Config(output_language='swift')
-        generator = ModelGenerator(config)
-        model_code = generator.generate(self.valid_json)
+        model_code = JsonModeler.generate(Language.SWIFT, self.valid_json)
         expected_code = (
             "struct Root {\n"
             "    var Person: Person\n"
@@ -66,9 +61,7 @@ class TestModelGenerator(unittest.TestCase):
         self.assertEqual(model_code.strip(), expected_code.strip())
 
     def test_generate_python(self):
-        config = Config(output_language='python')
-        generator = ModelGenerator(config)
-        model_code = generator.generate(self.valid_json)
+        model_code = JsonModeler.generate(Language.PYTHON, self.valid_json)
         expected_code = (
             "class Root:\n"
             "    def __init__(self, Person: Person, Address: Address):\n"
