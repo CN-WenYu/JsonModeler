@@ -71,11 +71,10 @@ jsonmodeler example.json -l python -o output.py
 
 ```python
 from jsonmodeler.config import Config
-from jsonmodeler.json_parser import JSONParser
 from jsonmodeler.model_generator import ModelGenerator
 
 # 创建配置对象
-config = Config(input_language='json', output_language='python')
+config = Config(output_language='python')
 
 # 创建模型生成器对象
 generator = ModelGenerator(config)

@@ -1,6 +1,5 @@
 import unittest
 from jsonmodeler.config import Config
-from jsonmodeler.json_parser import JSONParser
 from jsonmodeler.model_generator import ModelGenerator
 
 
@@ -20,10 +19,14 @@ class TestModelGenerator(unittest.TestCase):
         }
 
     def test_generate_objc(self):
-        config = Config(input_language='json', output_language='objc')
+        config = Config(output_language='objc')
         generator = ModelGenerator(config)
         model_code = generator.generate(self.valid_json)
         expected_code = (
+            "@interface Root : NSObject\n\n"
+            "@property (nonatomic, strong) Person *Person;\n"
+            "@property (nonatomic, strong) Address *Address;\n"
+            "@end\n\n"
             "@interface Person : NSObject\n\n"
             "@property (nonatomic, strong) NSString *name;\n"
             "@property (nonatomic, strong) NSNumber *age;\n"
@@ -42,10 +45,14 @@ class TestModelGenerator(unittest.TestCase):
         self.assertEqual(model_code_lines, expected_code_lines)
 
     def test_generate_swift(self):
-        config = Config(input_language='json', output_language='swift')
+        config = Config(output_language='swift')
         generator = ModelGenerator(config)
         model_code = generator.generate(self.valid_json)
         expected_code = (
+            "struct Root {\n"
+            "    var Person: Person\n"
+            "    var Address: Address\n"
+            "}\n\n"
             "struct Person {\n"
             "    var name: String\n"
             "    var age: Int\n"
@@ -59,10 +66,15 @@ class TestModelGenerator(unittest.TestCase):
         self.assertEqual(model_code.strip(), expected_code.strip())
 
     def test_generate_python(self):
-        config = Config(input_language='json', output_language='python')
+        config = Config(output_language='python')
         generator = ModelGenerator(config)
         model_code = generator.generate(self.valid_json)
         expected_code = (
+            "class Root:\n"
+            "    def __init__(self, Person: Person, Address: Address):\n"
+            "        self.Person = Person\n"
+            "        self.Address = Address\n"
+            "\n\n"
             "class Person:\n"
             "    def __init__(self, name: str, age: int, is_student: bool):\n"
             "        self.name = name\n"

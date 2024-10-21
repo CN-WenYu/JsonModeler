@@ -1,6 +1,6 @@
 class BaseGenerator:
     @staticmethod
-    def generate(parsed_data):
+    def generate(parsed_data) -> str:
         """
         生成目标语言的模型代码。这个方法应该在子类中实现。
 

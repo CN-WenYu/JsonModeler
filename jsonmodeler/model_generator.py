@@ -41,7 +41,7 @@ class ModelGenerator:
         :return: 生成的模型代码。
         :raises ValueError: 如果输出语言不支持，则抛出 ValueError 异常。
         """
-        language = self.language_map.get(self.config.output_language.lower(), None)
+        language = self.language_map.get(self.config.output_language.lower(), self.config.output_language.lower())
 
         if language is None:
             raise ValueError(f"Unsupported output language: {self.config.output_language}")

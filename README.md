@@ -71,11 +71,10 @@ Here's an example of how to use JsonModeler in your Python code:
 
 ```python
 from jsonmodeler.config import Config
-from jsonmodeler.json_parser import JSONParser
 from jsonmodeler.model_generator import ModelGenerator
 
 # Example usage
-config = Config(input_language='json', output_language='python')
+config = Config(output_language='python')
 generator = ModelGenerator(config)
 model_code = generator.generate({
     "Person": {
