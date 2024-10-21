@@ -19,7 +19,7 @@ def main():
         parsed_data = JSONParser.from_file(args.input_file)
 
         # 将命令行选项中的语言字符串映射到枚举常量
-        language = Language(args.language.upper())
+        language = Language(args.language)
 
         # 生成模型代码
         model_code = JsonModeler.generate(language, parsed_data)
