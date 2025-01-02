@@ -49,8 +49,13 @@ pip install jsonmodeler
 要使用命令行工具，您可以运行：
 
 ```bash
-jsonmodeler [options]
+jsonmodeler [-l <language>] <input_file> [-o <output_file>] [--interactive]
 ```
+
+- `-l <language>`: 目标编程语言。支持的语言包括 `cpp`、`csharp`、`dart`、`go`、`java`、`js`、`kotlin`、`objc`、`php`、`python`、`swift`、`ts`。
+- `<input_file>`: 输入 JSON 文件的路径。如果未提供，工具将从标准输入读取。
+- `-o <output_file>`: （可选）输出文件的路径。如果未指定，生成的代码将打印到控制台。
+- `--interactive`: 以交互模式运行工具，允许您逐步输入参数。
 
 您可以使用 `--help` 选项查看所有可用的命令行选项：
 
@@ -63,8 +68,10 @@ jsonmodeler --help
 以下是如何使用命令行工具将 JSON 数据转换为 Python 模型代码的示例：
 
 ```bash
-jsonmodeler example.json -l python -o output.py
+jsonmodeler -l python example.json -o output.py
 ```
+
+### 在 Python 代码中使用
 
 以下是如何在 Python 代码中使用 JsonModeler 的示例：
 

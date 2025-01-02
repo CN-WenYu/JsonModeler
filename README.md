@@ -49,8 +49,13 @@ pip install jsonmodeler
 To use the command-line tool, you can run:
 
 ```bash
-jsonmodeler [options]
+jsonmodeler [-l <language>] <input_file> [-o <output_file>] [--interactive]
 ```
+
+- `-l <language>`: Target programming language for model code. Supported languages include `cpp`, `csharp`, `dart`, `go`, `java`, `js`, `kotlin`, `objc`, `php`, `python`, `swift`, `ts`.
+- `<input_file>`: Path to the input JSON file. If not provided, the tool will read from standard input.
+- `-o <output_file>`: (Optional) Path to the output file. If not specified, the generated code will be printed to the console.
+- `--interactive`: Run the tool in interactive mode, allowing you to input parameters step-by-step.
 
 You can use the `--help` option to view all available command line options:
 
@@ -60,11 +65,13 @@ jsonmodeler --help
 
 ### Example
 
-Here's an example of how to use command line tools to convert JSON data into Python model code:
+Here's an example of how to use the command line tool to convert JSON data into Python model code:
 
 ```bash
-jsonmodeler example.json -l python -o output.py
+jsonmodeler -l python example.json -o output.py
 ```
+
+### Using in Python Code
 
 Here's an example of how to use JsonModeler in your Python code:
 

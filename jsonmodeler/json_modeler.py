@@ -62,4 +62,9 @@ class JsonModeler:
         if generator_class is None:
             raise ValueError(f"Unsupported output language: {language}")
 
+        # 处理已解析的数组
+        if isinstance(parsed_data, list):
+            # 如果顶层是一个列表，则将其包装在带有通用键的字典中
+            parsed_data = {"RootArray": parsed_data}
+
         return generator_class.generate(parsed_data)
