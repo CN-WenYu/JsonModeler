@@ -65,11 +65,29 @@ jsonmodeler --help
 
 ### 示例
 
-以下是如何使用命令行工具将 JSON 数据转换为 Python 模型代码的示例：
+#### 将 JSON 转换为 Python 模型代码
 
 ```bash
 jsonmodeler -l python example.json -o output.py
 ```
+
+此命令将 `example.json` 中的 JSON 数据转换为 Python 模型代码，并写入 `output.py`。
+
+#### 将 JSON 转换为 Java 模型代码并打印到控制台
+
+```bash
+jsonmodeler -l java example.json
+```
+
+此命令将 `example.json` 中的 JSON 数据转换为 Java 模型代码，并将结果打印到控制台。
+
+#### 交互模式
+
+```bash
+jsonmodeler --interactive
+```
+
+此命令以交互模式启动工具，允许您直接输入目标语言和 JSON 数据。
 
 ### 在 Python 代码中使用
 

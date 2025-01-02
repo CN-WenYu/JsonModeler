@@ -63,13 +63,31 @@ You can use the `--help` option to view all available command line options:
 jsonmodeler --help
 ```
 
-### Example
+### Examples
 
-Here's an example of how to use the command line tool to convert JSON data into Python model code:
+#### Convert JSON to Python Model Code
 
 ```bash
 jsonmodeler -l python example.json -o output.py
 ```
+
+This command converts the JSON data in `example.json` to Python model code and writes it to `output.py`.
+
+#### Convert JSON to Java Model Code and Print to Console
+
+```bash
+jsonmodeler -l java example.json
+```
+
+This command converts the JSON data in `example.json` to Java model code and prints the result to the console.
+
+#### Interactive Mode
+
+```bash
+jsonmodeler --interactive
+```
+
+This command starts the tool in interactive mode, allowing you to input the target language and JSON data directly.
 
 ### Using in Python Code
 
